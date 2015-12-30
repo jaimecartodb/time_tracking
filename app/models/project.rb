@@ -1,19 +1,18 @@
 class Project < ActiveRecord::Base
+	has_many :entries
+
 	def self.iron_find(id)
 		self.where(id: id).first
-	end	
+	end
 
 	def iron_print
-		"Project: #{name} - "
+		"project: #{name} - "
 	end
 
 	def self.clean_old
-		date = Time.now.midnight - 1.week
-		projects = where("created_at < ?", date)
+		date = Time.now.midnight -1.week
+		project = where("created_at < ?", date)
 		projects.destroy_all
 	end
 
-	def self.last_created_projects(number)
-		limit(number).order(name: :desc)
-	end
 end

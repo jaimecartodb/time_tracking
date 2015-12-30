@@ -1,11 +1,16 @@
-<h1>Welcome to Timetracking tool</h1>
+e<h1>Welcome to Timetracking tool</h1>
 
 <ul>
 	<% @projects.each do |project| %>
-		<%= if @project.description.present? %>
-			<li><%= "{project.name} - #{project.description}" %> </li>
+		<li>
+			<%="#{project.id}: " %>
+			<%= if @project.description.present? %>
+			<%= "{project.name} - #{project.description}" %> </li>
 		<% else %>
-			<li><%= "{project.name}" %> </li>
+			<%= "{project.name}" %>
+		<% end %>
+		<%= link_to("Delete", "/projects/#{project.id}", method: :delete) %>
+	</li>
 	<% end %>
 </ul>
 
