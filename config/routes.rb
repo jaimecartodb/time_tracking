@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   post 'projects' => 'projects#create'
   get 'projects/:id/edit' => 'projects#edit'
   delete 'projects/:id' => 'projects#destroy'
+
+  get 'projects/:project_id/entries' => 'entries#index'
 end
